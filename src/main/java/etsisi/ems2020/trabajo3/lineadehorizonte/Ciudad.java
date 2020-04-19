@@ -196,8 +196,7 @@ return linea;
      pocos días antes del estado de alarma.
      */
 
-    public void cargarEdificios (String fichero)
-    {
+    public void cargarEdificios (String fichero) {
 //    	int n = 6;
 //    	int i=0;
 //        int xi,y,xd;
@@ -209,22 +208,19 @@ return linea;
 //            this.addEdificio(new Edificio(xi,y,xd));
 //        }
     	
-        try
-        {
+        try {
+        	
             int xi, y, xd;
             Scanner sr = new Scanner(new File(fichero));
 
-            while(sr.hasNext())
-            {
+            while(sr.hasNext()) {
                 xi = sr.nextInt();
                 xd = sr.nextInt();
                 y = sr.nextInt();
 
                 this.addEdificio(new Edificio(xi, y, xd));
             }
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e){
         	System.out.println(e);
         }
            
