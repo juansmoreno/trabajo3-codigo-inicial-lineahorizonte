@@ -68,8 +68,7 @@ public class LineaHorizonte {
                 out.println(cadena(i));
             }
             out.close();
-        }
-        catch(Exception e){}
+        }catch(Exception e){}
     }
  
     

@@ -222,8 +222,7 @@ return linea;
 
                 this.addEdificio(new Edificio(xi, y, xd));
             }
-        }
-        catch(Exception e){} 
+        }catch(Exception e){} 
            
     }
 
