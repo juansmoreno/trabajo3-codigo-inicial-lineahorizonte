@@ -229,8 +229,7 @@ return linea;
                 xd = sr.nextInt();
                 y = sr.nextInt();
 
-                Edificio Salida = new Edificio(xi, y, xd);
-                this.addEdificio(Salida);
+                this.addEdificio(new Edificio(xi, y, xd));
             }
         }
         catch(Exception e){} 
