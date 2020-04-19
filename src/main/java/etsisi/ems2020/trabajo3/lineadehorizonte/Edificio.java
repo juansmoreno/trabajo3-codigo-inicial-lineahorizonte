@@ -11,12 +11,12 @@ public class Edificio {
         this.xi = 0;
         this.y = 0;
     }    
-    public Edificio(int xi, int y, int xd)
+    public Edificio(java.util.List<Integer> list)
     {
-    	this.setXd(xd);
-    	this.setXi(xi);
-    	this.setY(y);
-    }    
+    	this.xi = list.get(0);
+    	this.xd = list.get(1);
+    	this.y = list.get(2);
+    }
     public int getXi() {
         return this.xi;
     }

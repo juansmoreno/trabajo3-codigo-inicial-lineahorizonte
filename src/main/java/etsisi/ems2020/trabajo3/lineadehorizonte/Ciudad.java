@@ -2,6 +2,7 @@ package etsisi.ems2020.trabajo3.lineadehorizonte;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -218,7 +219,7 @@ return linea;
                 xd = sr.nextInt();
                 y = sr.nextInt();
 
-                this.addEdificio(new Edificio(xi, y, xd));
+                this.addEdificio(new Edificio(Arrays.asList(xi,xd,y)));
             }
         } catch(Exception e){
         	System.out.println(e);
@@ -236,7 +237,7 @@ return linea;
             xi=(int)(Math.random()*100);
             y=(int)(Math.random()*100);
             xd=(int)(xi+(Math.random()*100));
-            this.addEdificio(new Edificio(xi,y,xd));
+            this.addEdificio(new Edificio(Arrays.asList(xi,xd,y)));
         }
     }
 }

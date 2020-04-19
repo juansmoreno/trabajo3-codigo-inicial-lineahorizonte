@@ -1,5 +1,7 @@
 package etsisi.ems2020.trabajo3.lineadehorizonte;
 
+import java.util.Arrays;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,17 +31,17 @@ public class CiudadTest extends TestCase{
 		try {			
 			
 			c = new Ciudad();
-			Edificio e1 = new Edificio(1,4,3);
+			Edificio e1 = new Edificio(Arrays.asList(1,3,4));
 			c.addEdificio(e1);
-			Edificio e2 = new Edificio(2,7,9);
+			Edificio e2 = new Edificio(Arrays.asList(2,9,7));
 			c.addEdificio(e2);
-			Edificio e3 = new Edificio(4,4,12);
+			Edificio e3 = new Edificio(Arrays.asList(4,12,4));
 			c.addEdificio(e3);	
-			Edificio e4 = new Edificio(6,9,8);
+			Edificio e4 = new Edificio(Arrays.asList(6,8,9));
 			c.addEdificio(e4);
-			Edificio e5 = new Edificio(11,6,13);
+			Edificio e5 = new Edificio(Arrays.asList(11,13,6));
 			c.addEdificio(e5);
-			Edificio e6 = new Edificio(14,2,15);
+			Edificio e6 = new Edificio(Arrays.asList(14,15,2));
 			c.addEdificio(e6);		
 
 			
@@ -67,9 +69,9 @@ public class CiudadTest extends TestCase{
 		try {			
 			
 			c = new Ciudad();
-			Edificio e1 = new Edificio(3,5,6);
+			Edificio e1 = new Edificio(Arrays.asList(3,6,5));
 			c.addEdificio(e1);
-			Edificio e2 = new Edificio(4,3,9);
+			Edificio e2 = new Edificio(Arrays.asList(4,9,3));
 			c.addEdificio(e2);
 			
 			linea = c.getLineaHorizonte();			
