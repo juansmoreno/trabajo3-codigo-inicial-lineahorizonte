@@ -83,13 +83,15 @@ public class LineaHorizonte {
     
     public String cadena (int i){
     	Punto p = LineaHorizonte.get(i);
-    	int x = p.getX();
+    	return p.toString();
+    	
+    	/*int x = p.getX();
     	int y = p.getY();
     	String linea = "Punto [x=";
 		linea = linea + x;
 		linea = linea + ", y=";
 		linea = linea + y;
 		linea = linea +  "]";
-		return linea;
+		return linea;*/
     }
 }
