@@ -13,9 +13,9 @@ public class Edificio {
     }    
     public Edificio(int xi, int y, int xd)
     {
-        this.xd = xd;
-        this.xi = xi;
-        this.y = y;
+    	this.setXd(xd);
+    	this.setXi(xi);
+    	this.setY(y);
     }    
     public int getXi() {
         return this.xi;
