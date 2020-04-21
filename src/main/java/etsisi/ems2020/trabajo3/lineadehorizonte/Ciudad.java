@@ -58,38 +58,29 @@ ciudad = new ArrayList <Edificio>();
         return crearLineaHorizonte(pi, pd);  
     }
     
-public LineaHorizonte crearLineaHorizonte(int pi, int pd)
-{
-LineaHorizonte linea = new LineaHorizonte(); // LineaHorizonte de salida
-Punto p1 = new Punto();   // punto donde se guardara en su X la Xi del efificio y en su Y la altura del edificio
-Punto p2 = new Punto();   // punto donde se guardara en su X la Xd del efificio y en su Y le pondremos el valor 0
-Edificio edificio = new Edificio();    
-        
-// Caso base, la ciudad solo tiene un edificio, el perfil es el de ese edificio. 
-if(pi==pd) 
-{
-edificio = this.getEdificio(pi); // Obtenemos el único edificio y lo guardo en b
-// En cada punto guardamos la coordenada X y la altura.
-p1.setX(edificio.getXi());       
-p1.setY(edificio.getY());        // guardo la altura
-p2.setX(edificio.getXd());       
-p2.setY(0);                      // como el edificio se compone de 3 variables, en la Y de p2 le añadiremos un 0
-// Añado los puntos a la línea del horizonte
-linea.addPunto(p1);      
-linea.addPunto(p2);
-}
-else
-{
-// Edificio mitad
-int medio=(pi+pd)/2;
-
-LineaHorizonte s1 = this.crearLineaHorizonte(pi,medio);  
-LineaHorizonte s2 = this.crearLineaHorizonte(medio+1,pd);
-Punto a=null, b=null, aux=null;
-linea = LineaHorizonteFussion(s1,s2,a,b,aux); 
-}
-return linea;
+    public LineaHorizonte crearLineaHorizonte(int pi, int pd){
+        LineaHorizonte linea = new LineaHorizonte();
+        java.util.List<Punto> puntos = Arrays.asList(new Punto(), new Punto());
+        if(pi==pd){
+            guardarAltura(this.getEdificio(pi), puntos);
+            linea.addPunto(puntos.get(0));
+            linea.addPunto(puntos.get(1));
+        } else {
+            		int medio=(pi+pd)/2;
+            		
+            		LineaHorizonte s1 = this.crearLineaHorizonte(pi,medio);  
+            		LineaHorizonte s2 = this.crearLineaHorizonte(medio+1,pd);
+            		linea = LineaHorizonteFussion(s1,s2,new Punto(),new Punto(),new Punto()); 
+        }
+        return linea;
     }
+            	
+ public void guardarAltura(Edificio edificio, java.util.List<Punto> list){
+        list.get(0).setX(edificio.getXi());
+        list.get(0).setY(edificio.getY());
+        list.get(1).setX(edificio.getXd());
+        list.get(1).setY(0);
+}
     
     /**
      * Función encargada de fusionar los dos LineaHorizonte obtenidos por la técnica divide y
