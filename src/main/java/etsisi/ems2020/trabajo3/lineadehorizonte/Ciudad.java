@@ -17,18 +17,17 @@ public class Ciudad {
 	
     private ArrayList <Edificio> ciudad;
 
-    public Ciudad()
-    {
+    public Ciudad(){
     	
     	/*
     	 * Generamos una ciudad de manera aleatoria para hacer 
     	 * pruebas.
     	 */
-ciudad = new ArrayList <Edificio>();
-this.metodoRandom(5);
-        
-ciudad = new ArrayList <Edificio>();
-}
+	ciudad = new ArrayList <Edificio>();
+	this.metodoRandom(5);
+	        
+	ciudad = new ArrayList <Edificio>();
+    }
     
         
     public Edificio getEdificio(int i) {
@@ -61,26 +60,26 @@ ciudad = new ArrayList <Edificio>();
     public LineaHorizonte crearLineaHorizonte(int pi, int pd){
         LineaHorizonte linea = new LineaHorizonte();
         java.util.List<Punto> puntos = Arrays.asList(new Punto(), new Punto());
-        if(pi==pd){
+        if(pi==pd){			//Si los edificios de la izquierda y de la derecha son iguales.
             guardarAltura(this.getEdificio(pi), puntos);
             linea.addPunto(puntos.get(0));
             linea.addPunto(puntos.get(1));
         } else {
             		int medio=(pi+pd)/2;
-            		
+            	
             		LineaHorizonte s1 = this.crearLineaHorizonte(pi,medio);  
             		LineaHorizonte s2 = this.crearLineaHorizonte(medio+1,pd);
-            		linea = LineaHorizonteFussion(s1,s2,new Punto(),new Punto(),new Punto()); 
+            		linea = LineaHorizonteFussion(s1,s2); 
         }
         return linea;
     }
             	
- public void guardarAltura(Edificio edificio, java.util.List<Punto> list){
-        list.get(0).setX(edificio.getXi());
-        list.get(0).setY(edificio.getY());
-        list.get(1).setX(edificio.getXd());
-        list.get(1).setY(0);
-}
+	public void guardarAltura(Edificio edificio, java.util.List<Punto> list){
+	        list.get(0).setX(edificio.getXi());
+	        list.get(0).setY(edificio.getY());
+	        list.get(1).setX(edificio.getXd());
+	        list.get(1).setY(0);
+	}
     
     /**
      * Función encargada de fusionar los dos LineaHorizonte obtenidos por la técnica divide y
@@ -88,28 +87,25 @@ ciudad = new ArrayList <Edificio>();
      * edificio solapa a otro, si hay edificios contiguos, etc. y solucionar dichos
      * problemas para que el LineaHorizonte calculado sea el correcto.
      */
-    public LineaHorizonte LineaHorizonteFussion(LineaHorizonte s1,LineaHorizonte s2, Punto p1, Punto p2, Punto paux)
+    public LineaHorizonte LineaHorizonteFussion(LineaHorizonte s1,LineaHorizonte s2)
     {
     	// en estas variables guardaremos las alturas de los puntos anteriores, en s1y la del s1, en s2y la del s2 
     	// y en prev guardaremos la previa del segmento anterior introducido
         int s1y=-1, s2y=-1, prev=-1;    
         LineaHorizonte salida = new LineaHorizonte(); // LineaHorizonte de salida
         
-        p1 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s1
-        p2 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s2
+        Punto p1 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s1
+        Punto p2 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s2
         
-        System.out.println("==== S1 ====");
-        s1.imprimir();
-        System.out.println("==== S2 ====");
-        s2.imprimir();
-        System.out.println("\n");
+        imprimirFusionLineas(s1,s2);	//Imprimios la fusión de las lineas
         
-        
+        Punto paux = new Punto();  // Inicializamos la variable paux
         
         //Mientras tengamos elementos en s1 y en s2
         while ((!s1.isEmpty()) && (!s2.isEmpty())) 
         {
-            paux = new Punto();  // Inicializamos la variable paux
+        	paux = new Punto();
+        	
             p1 = s1.getPunto(0); // guardamos el primer elemento de s1
             p2 = s2.getPunto(0); // guardamos el primer elemento de s2
 
@@ -157,6 +153,7 @@ ciudad = new ArrayList <Edificio>();
                 s2.borrarPunto(0);
             }
         }
+        
         while ((!s1.isEmpty())) //si aun nos quedan elementos en el s1
         {
             paux=s1.getPunto(0); // guardamos en paux el primer punto
@@ -179,6 +176,7 @@ ciudad = new ArrayList <Edificio>();
             }
             s2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es valido)
         }
+        
         return salida;
     }
     /*
@@ -216,6 +214,14 @@ ciudad = new ArrayList <Edificio>();
         	System.out.println(e);
         }
            
+    }
+    
+    public void imprimirFusionLineas(LineaHorizonte s1,LineaHorizonte s2) {
+    	System.out.println("==== S1 ====");
+        s1.imprimir();
+        System.out.println("==== S2 ====");
+        s2.imprimir();
+        System.out.println("\n");
     }
 
     
