@@ -86,8 +86,5 @@ public class Punto {
 		linea = linea +  "]";
 		return linea;
 	}
-    public int calcularMaximo(int s2y) {
-    	return Math.max(this.getY(), s2y);
-    }
-    
+
 }
