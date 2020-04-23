@@ -64,6 +64,18 @@ public class Punto {
     	double hipotenusa = Math.sqrt(cateto1*cateto1 + cateto2*cateto2);
     	return hipotenusa;
     }
+    
+    public boolean esMaximoX (Punto p2) {
+    	if(p2.getX() < this.getX())
+    		return true;
+    	return false;
+    }
+    
+    public boolean esMaximoY (Punto p2) {
+    	if(p2.getY() < this.getY())
+    		return true;
+    	return false;
+    } 
 
 	@Override
 	public String toString() {

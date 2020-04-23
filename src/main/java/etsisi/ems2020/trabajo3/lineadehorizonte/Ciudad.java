@@ -102,8 +102,7 @@ public class Ciudad {
         Punto paux = new Punto();  // Inicializamos la variable paux
         
         //Mientras tengamos elementos en s1 y en s2
-        while ((!s1.isEmpty()) && (!s2.isEmpty())) 
-        {
+        while ((!s1.isEmpty()) && (!s2.isEmpty())) {
         	paux = new Punto();
         	
             p1 = s1.getPunto(0); // guardamos el primer elemento de s1
