@@ -111,7 +111,7 @@ public class Ciudad {
             if (p1.getX() < p2.getX()) { // si X del s1 es menor que la X del s2
             
                 paux.setX(p1.getX());                // guardamos en paux la X de p1
-                paux.setY(Math.max(p1.getY(), s2y)); // y hacemos que el maximo entre la Y del s1 y la altura previa del s2 sea la altura Y de paux
+                paux.setY(p1.calcularMaximo(s2y)); // y hacemos que el maximo entre la Y del s1 y la altura previa del s2 sea la altura Y de paux
                 
                 if (paux.getY()!=prev) { // si este maximo no es igual al del segmento anterior
                 
