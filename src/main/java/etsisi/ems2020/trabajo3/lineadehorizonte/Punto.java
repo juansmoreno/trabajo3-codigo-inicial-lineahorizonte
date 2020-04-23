@@ -27,6 +27,7 @@ public class Punto {
         this.x = x;
         this.y = y;
     }
+    
     /*
      * 
      * Get de la coordenada X
@@ -42,12 +43,14 @@ public class Punto {
     public void setX(int x) {
         this.x = x;
     }
+    
     /*
  	   Get de la coordenada Y
      */
     public int getY() {
         return y;
     }
+    
     /* 
      * Set de la coordenada Y
      */

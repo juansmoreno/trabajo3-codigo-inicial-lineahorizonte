@@ -57,7 +57,6 @@ public class LineaHorizonte {
             FileWriter fileWriter = new FileWriter(fichero);
             PrintWriter out = new PrintWriter (fileWriter);
      
-         
             for(int i=0; i<this.size(); i++){
                 
                 out.println(cadena(i));
