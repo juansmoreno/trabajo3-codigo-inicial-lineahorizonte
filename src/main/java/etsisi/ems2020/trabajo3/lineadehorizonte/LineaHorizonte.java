@@ -54,7 +54,6 @@ public class LineaHorizonte {
     
     public void guardaLineaHorizonte (String fichero){
         try{
-            Punto p = new Punto();
             FileWriter fileWriter = new FileWriter(fichero);
             PrintWriter out = new PrintWriter (fileWriter);
      
