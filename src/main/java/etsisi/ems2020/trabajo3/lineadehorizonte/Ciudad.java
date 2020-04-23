@@ -237,5 +237,6 @@ public class Ciudad {
             xd=(int)(xi+(Math.random()*100));
             this.addEdificio(new Edificio(Arrays.asList(xi,xd,y)));
         }
+        //Comentario basura
     }
 }
