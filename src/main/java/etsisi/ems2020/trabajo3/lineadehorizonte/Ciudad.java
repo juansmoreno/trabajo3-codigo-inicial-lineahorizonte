@@ -109,7 +109,7 @@ public class Ciudad {
             
             	paux = actualizarPaux(p1,s2y);
                 
-                if (paux.getY()!=prev) { // si este maximo no es igual al del segmento anterior
+                if (paux.esDistinto(prev)) { // si este maximo no es igual al del segmento anterior
                 
                 	prev = anadirPuntoALineaHorizonte(salida, paux);
                 }
@@ -120,7 +120,7 @@ public class Ciudad {
             	
             	paux = actualizarPaux(p2,s1y);
 
-                if (paux.getY()!=prev) // si este maximo no es igual al del segmento anterior
+                if (paux.esDistinto(prev)) // si este maximo no es igual al del segmento anterior
                 {
                 	prev = anadirPuntoALineaHorizonte(salida, paux);
                 }
@@ -128,11 +128,15 @@ public class Ciudad {
                 s2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es valido)
             }
             else { // si la X del s1 es igual a la X del s2
+<<<<<<< HEAD
                 if (p1.esMaximoY(p2) && (p1.getY()!=prev)) { // guardaremos aquel punto que tenga la altura mas alta
+=======
+                if ((p1.getY() > p2.getY()) && (p1.esDistinto(prev))) { // guardaremos aquel punto que tenga la altura mas alta
+>>>>>>> origin/master
                 
                 	prev = anadirPuntoALineaHorizonte(salida, p1);
                 }
-                if ((p1.getY() <= p2.getY()) && (p2.getY()!=prev)){
+                if ((p1.getY() <= p2.getY()) && (p2.esDistinto(prev))){
                 	
                 	prev = anadirPuntoALineaHorizonte(salida, p2);
                 }
@@ -148,7 +152,7 @@ public class Ciudad {
         
             paux=s1.getPunto(0); // guardamos en paux el primer punto
             
-            if (paux.getY()!=prev) { // si paux no tiene la misma altura del segmento previo
+            if (paux.esDistinto(prev)) { // si paux no tiene la misma altura del segmento previo
             
             	prev = anadirPuntoALineaHorizonte(salida, paux);
             }
@@ -160,7 +164,7 @@ public class Ciudad {
         
             paux=s2.getPunto(0); // guardamos en paux el primer punto
            
-            if (paux.getY()!=prev) { // si paux no tiene la misma altura del segmento previo
+            if (paux.esDistinto(prev)) { // si paux no tiene la misma altura del segmento previo
             
             	prev = anadirPuntoALineaHorizonte(salida, paux);
             }
@@ -216,7 +220,7 @@ public class Ciudad {
     	salida.addPunto(paux); // añadimos el punto al LineaHorizonte de salida
         return paux.getY();
     }
-    
+
     public void imprimirFusionLineas(LineaHorizonte s1,LineaHorizonte s2) {
     	System.out.println("==== S1 ====");
         s1.imprimir();
