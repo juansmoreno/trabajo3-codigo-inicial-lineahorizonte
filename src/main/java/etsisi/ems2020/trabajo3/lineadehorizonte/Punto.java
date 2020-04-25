@@ -75,7 +75,12 @@ public class Punto {
     	if(p2.getY() < this.getY())
     		return true;
     	return false;
-    } 
+    }
+    public boolean esDistinto(int prev) {
+    	if(this.getY()!=prev)
+    		return true;
+    	return false;
+    }
 
 	@Override
 	public String toString() {
