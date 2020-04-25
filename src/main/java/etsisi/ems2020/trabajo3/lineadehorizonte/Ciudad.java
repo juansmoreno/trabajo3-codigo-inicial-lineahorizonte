@@ -93,9 +93,7 @@ public class Ciudad {
     	// y en prev guardaremos la previa del segmento anterior introducido
         int s1y=-1, s2y=-1, prev=-1;    
         LineaHorizonte salida = new LineaHorizonte(); // LineaHorizonte de salida
-        
         imprimirFusionLineas(s1,s2);	//Imprimios la fusión de las lineas
-        
         Punto paux = new Punto();  // Inicializamos la variable paux
         
         //Mientras tengamos elementos en s1 y en s2
@@ -106,22 +104,18 @@ public class Ciudad {
         	Punto p2 = s2.getPunto(0); // guardamos el primer elemento de s2
 
             if (p2.esMaximoX(p1)) { // si X del s1 es menor que la X del s2
-            
             	paux = actualizarPaux(p1,s2y);
                 
                 if (paux.esDistinto(prev)) { // si este maximo no es igual al del segmento anterior
-                
                 	prev = anadirPuntoALineaHorizonte(salida, paux);
                 }
                 s1y = p1.getY();   // actualizamos la altura s1y
                 s1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es valido)
             }
             else if (p1.esMaximoX(p2)) { // si X del s1 es mayor que la X del s2
-            	
             	paux = actualizarPaux(p2,s1y);
 
-                if (paux.esDistinto(prev)) // si este maximo no es igual al del segmento anterior
-                {
+                if (paux.esDistinto(prev)){ // si este maximo no es igual al del segmento anterior
                 	prev = anadirPuntoALineaHorizonte(salida, paux);
                 }
                 s2y = p2.getY();   // actualizamos la altura s2y
@@ -129,14 +123,12 @@ public class Ciudad {
             }
             else { // si la X del s1 es igual a la X del s2
                 if (p1.esMaximoY(p2) && (p1.esDistinto(prev))) { // guardaremos aquel punto que tenga la altura mas alta
-
                 	prev = anadirPuntoALineaHorizonte(salida, p1);
                 }
                 if ((p1.getY() <= p2.getY()) && (p2.esDistinto(prev))){
-                	
                 	prev = anadirPuntoALineaHorizonte(salida, p2);
                 }
-                
+
                 s1y = p1.getY();   // actualizamos la s1y e s2y
                 s2y = p2.getY();
                 s1.borrarPunto(0); // eliminamos el punto del s1 y del s2
@@ -145,11 +137,9 @@ public class Ciudad {
         }
         
         while ((!s1.isEmpty())) { //si aun nos quedan elementos en el s1
-        
             paux=s1.getPunto(0); // guardamos en paux el primer punto
             
             if (paux.esDistinto(prev)) { // si paux no tiene la misma altura del segmento previo
-            
             	prev = anadirPuntoALineaHorizonte(salida, paux);
             }
             s1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es valido)
@@ -157,11 +147,9 @@ public class Ciudad {
         
         
         while((!s2.isEmpty())) { //si aun nos quedan elementos en el s2
-        
             paux=s2.getPunto(0); // guardamos en paux el primer punto
            
             if (paux.esDistinto(prev)) { // si paux no tiene la misma altura del segmento previo
-            
             	prev = anadirPuntoALineaHorizonte(salida, paux);
             }
             s2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es valido)
