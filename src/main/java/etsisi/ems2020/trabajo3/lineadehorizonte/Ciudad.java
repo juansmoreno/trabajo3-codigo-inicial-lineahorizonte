@@ -94,9 +94,6 @@ public class Ciudad {
         int s1y=-1, s2y=-1, prev=-1;    
         LineaHorizonte salida = new LineaHorizonte(); // LineaHorizonte de salida
         
-        Punto p1 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s1
-        Punto p2 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s2
-        
         imprimirFusionLineas(s1,s2);	//Imprimios la fusión de las lineas
         
         Punto paux = new Punto();  // Inicializamos la variable paux
@@ -105,13 +102,12 @@ public class Ciudad {
         while ((!s1.isEmpty()) && (!s2.isEmpty())) {
         	paux = new Punto();
         	
-            p1 = s1.getPunto(0); // guardamos el primer elemento de s1
-            p2 = s2.getPunto(0); // guardamos el primer elemento de s2
+        	Punto p1 = s1.getPunto(0); // guardamos el primer elemento de s1
+        	Punto p2 = s2.getPunto(0); // guardamos el primer elemento de s2
 
-            if (p1.getX() < p2.getX()) { // si X del s1 es menor que la X del s2
+            if (p2.esMaximoX(p1)) { // si X del s1 es menor que la X del s2
             
-                paux.setX(p1.getX());                // guardamos en paux la X de p1
-                paux.setY(p1.calcularMaximo(s2y)); // y hacemos que el maximo entre la Y del s1 y la altura previa del s2 sea la altura Y de paux
+            	paux = actualizarPaux(p1,s2y);
                 
                 if (paux.getY()!=prev) { // si este maximo no es igual al del segmento anterior
                 
@@ -120,10 +116,9 @@ public class Ciudad {
                 s1y = p1.getY();   // actualizamos la altura s1y
                 s1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es valido)
             }
-            else if (p1.getX() > p2.getX()) { // si X del s1 es mayor que la X del s2
+            else if (p1.esMaximoX(p2)) { // si X del s1 es mayor que la X del s2
             	
-                paux.setX(p2.getX());                // guardamos en paux la X de p2
-                paux.setY(Math.max(p2.getY(), s1y)); // y hacemos que el maximo entre la Y del s2 y la altura previa del s1 sea la altura Y de paux
+            	paux = actualizarPaux(p2,s1y);
 
                 if (paux.getY()!=prev) // si este maximo no es igual al del segmento anterior
                 {
@@ -133,7 +128,7 @@ public class Ciudad {
                 s2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es valido)
             }
             else { // si la X del s1 es igual a la X del s2
-                if ((p1.getY() > p2.getY()) && (p1.getY()!=prev)) { // guardaremos aquel punto que tenga la altura mas alta
+                if (p1.esMaximoY(p2) && (p1.getY()!=prev)) { // guardaremos aquel punto que tenga la altura mas alta
                 
                 	prev = anadirPuntoALineaHorizonte(salida, p1);
                 }
@@ -148,7 +143,6 @@ public class Ciudad {
                 s2.borrarPunto(0);
             }
         }
-        
         
         while ((!s1.isEmpty())) { //si aun nos quedan elementos en el s1
         
@@ -172,9 +166,10 @@ public class Ciudad {
             }
             s2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es valido)
         }
-        
+      
         return salida;
     }
+    
     /*
      Método que carga los edificios que me pasan en el
      archivo cuyo nombre se encuentra en "fichero".
@@ -210,6 +205,11 @@ public class Ciudad {
         	System.out.println(e);
         }
            
+    }
+    
+    public Punto actualizarPaux(Punto p1, int s2y) {
+    	Punto paux = new Punto(p1.getX(), p1.calcularMaximo(s2y));
+    	return paux;
     }
     
     public int anadirPuntoALineaHorizonte(LineaHorizonte salida, Punto paux) {
