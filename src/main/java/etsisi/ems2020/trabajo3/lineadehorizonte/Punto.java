@@ -58,7 +58,7 @@ public class Punto {
         this.y = y;
     }
     
-    public double distancia (Punto b){
+    public double distancia (Punto b){          //PARECE UN METODO INUNTIL
     	double cateto1 = x - b.getX();
     	double cateto2 = y - b.getY();
     	double hipotenusa = Math.sqrt(cateto1*cateto1 + cateto2*cateto2);
@@ -76,6 +76,10 @@ public class Punto {
     	return(this.getY()!=prev);
     }
 
+    public int calcularMaximo(int s2y) {
+        return Math.max(this.getY(), s2y);
+    }
+
 	@Override
 	public String toString() {
 		String linea = "Punto [x=";
@@ -85,9 +89,4 @@ public class Punto {
 		linea = linea +  "]";
 		return linea;
 	}
-	
-    public int calcularMaximo(int s2y) {
-    	return Math.max(this.getY(), s2y);
-    }
-    
 }

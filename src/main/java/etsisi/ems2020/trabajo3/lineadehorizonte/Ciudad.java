@@ -98,7 +98,6 @@ public class Ciudad {
         
         //Mientras tengamos elementos en s1 y en s2
         while ((!s1.isEmpty()) && (!s2.isEmpty())) {
-        	
         	Punto p1 = s1.getPunto(0); // guardamos el primer elemento de s1
         	Punto p2 = s2.getPunto(0); // guardamos el primer elemento de s2
 
@@ -125,7 +124,6 @@ public class Ciudad {
                 if ((p1.getY() <= p2.getY()) && (p2.esDistinto(prev))){
                 	prev = anadirPuntoALineaHorizonte(salida, p2);      //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
-
                 s2y = actualizarAlturaLineaHorizonte(p2, s2);
                 s1y = actualizarAlturaLineaHorizonte(p1, s1);
             }
@@ -139,8 +137,7 @@ public class Ciudad {
             }
             s1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es valido)
         }
-        
-        
+
         while((!s2.isEmpty())) { //si aun nos quedan elementos en el s2
             paux=s2.getPunto(0); // guardamos en paux el primer punto
            
@@ -161,17 +158,6 @@ public class Ciudad {
      */
 
     public void cargarEdificios (String fichero) {
-//    	int n = 6;
-//    	int i=0;
-//        int xi,y,xd;
-//        for(i=0;i<n;i++)
-//        {
-//            xi=(int)(Math.random()*100);
-//            y=(int)(Math.random()*100);
-//            xd=(int)(xi+(Math.random()*100));
-//            this.addEdificio(new Edificio(xi,y,xd));
-//        }
-    	
         try {
         	
             int xi, y, xd;
@@ -213,7 +199,6 @@ public class Ciudad {
         System.out.println("\n");
     }
 
-    
     public void metodoRandom(int n)
     {
         int i=0;
@@ -225,6 +210,5 @@ public class Ciudad {
             xd=(int)(xi+(Math.random()*100));
             this.addEdificio(new Edificio(Arrays.asList(xi,xd,y)));
         }
-        //HOLA MUNDO
     }
 }
