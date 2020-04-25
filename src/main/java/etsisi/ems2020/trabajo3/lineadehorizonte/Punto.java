@@ -66,20 +66,14 @@ public class Punto {
     }
     
     public boolean esMaximoX (Punto p2) {
-    	if(p2.getX() < this.getX())
-    		return true;
-    	return false;
+    	return(p2.getX() < this.getX());
     }
     
     public boolean esMaximoY (Punto p2) {
-    	if(p2.getY() < this.getY())
-    		return true;
-    	return false;
+    	return(p2.getY() < this.getY());
     }
     public boolean esDistinto(int prev) {
-    	if(this.getY()!=prev)
-    		return true;
-    	return false;
+    	return(this.getY()!=prev);
     }
 
 	@Override
