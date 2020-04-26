@@ -153,7 +153,7 @@ public class LineaHorizonte {
                 if (p1.esMaximoY(p2) && (p1.esDistinto(prev))) { // guardaremos aquel punto que tenga la altura mas alta
                     prev = anadirPuntoALineaHorizonte(salida, p1);      //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
-                if ((p1.getY() <= p2.getY()) && (p2.esDistinto(prev))){
+                if ((p2.esMaximoY(p1) || p2.esIgualY(p1)) && (p2.esDistinto(prev))){
                     prev = anadirPuntoALineaHorizonte(salida, p2);      //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
                 s2y = actualizarAlturaLineaHorizonte(p2, s2);

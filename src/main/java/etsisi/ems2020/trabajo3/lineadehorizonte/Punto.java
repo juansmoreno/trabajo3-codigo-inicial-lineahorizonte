@@ -75,6 +75,9 @@ public class Punto {
     public boolean esDistinto(int prev) {
     	return(this.getY()!=prev);
     }
+    public boolean esIgualY(Punto p2){
+        return this.getY() == p2.getY();
+    }
 
     public int calcularMaximo(int s2y) {
         return Math.max(this.getY(), s2y);
