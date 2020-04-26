@@ -21,7 +21,7 @@ public class Main {
         
         // Creamos l�nea del horizonte
         LineaHorizonte linea = new LineaHorizonte();
-        linea = c.getLineaHorizonte();
+        linea.getLineaHorizonte(c);
         //Guardamos la linea del horizonte
         
         linea.guardaLineaHorizonte("salida.txt");

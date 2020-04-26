@@ -25,7 +25,7 @@ public class CiudadTest extends TestCase{
 	@Test
 	public void testGetLineaHorizonte1() {
 		
-		LineaHorizonte linea;
+		LineaHorizonte linea = new LineaHorizonte();
 		Ciudad c;
 		
 		try {			
@@ -42,10 +42,10 @@ public class CiudadTest extends TestCase{
 			Edificio e5 = new Edificio(Arrays.asList(11,13,6));
 			c.addEdificio(e5);
 			Edificio e6 = new Edificio(Arrays.asList(14,15,2));
-			c.addEdificio(e6);		
+			c.addEdificio(e6);
 
-			
-			linea = c.getLineaHorizonte();			
+
+			linea = linea.getLineaHorizonte(c);
 			assertTrue(linea.getPunto(0).getX()== 1  && linea.getPunto(0).getY()==4);
 			assertTrue(linea.getPunto(1).getX()== 2  && linea.getPunto(1).getY()==7);
 			assertTrue(linea.getPunto(2).getX()== 6  && linea.getPunto(2).getY()==9);
@@ -63,7 +63,7 @@ public class CiudadTest extends TestCase{
 	
 	@Test
 	public void testGetLineaHorizonte2() {
-		LineaHorizonte linea;
+		LineaHorizonte linea = new LineaHorizonte();
 		Ciudad c;
 		
 		try {			
@@ -73,8 +73,8 @@ public class CiudadTest extends TestCase{
 			c.addEdificio(e1);
 			Edificio e2 = new Edificio(Arrays.asList(4,9,3));
 			c.addEdificio(e2);
-			
-			linea = c.getLineaHorizonte();			
+
+			linea = linea.getLineaHorizonte(c);
 			assertTrue(linea.getPunto(0).getX()== 3  && linea.getPunto(0).getY()==5);
 			assertTrue(linea.getPunto(1).getX()== 6  && linea.getPunto(1).getY()==3);
 			assertTrue(linea.getPunto(2).getX()== 9  && linea.getPunto(2).getY()==0);			

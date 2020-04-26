@@ -5,14 +5,12 @@ public class Edificio {
     private int y;
     private int xd;
     
-    public Edificio()
-    {
+    public Edificio() {
         this.xd = 0;
         this.xi = 0;
         this.y = 0;
     }    
-    public Edificio(java.util.List<Integer> list)
-    {
+    public Edificio(java.util.List<Integer> list) {
     	this.xi = list.get(0);
     	this.xd = list.get(1);
     	this.y = list.get(2);
