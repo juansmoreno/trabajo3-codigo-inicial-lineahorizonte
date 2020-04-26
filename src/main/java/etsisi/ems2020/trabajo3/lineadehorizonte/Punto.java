@@ -66,17 +66,27 @@ public class Punto {
     }
     
     public boolean esMaximoX (Punto p2) {
-    	return(p2.getX() < this.getX());
+    	return (p2.getX() < this.getX());
     }
     
     public boolean esMaximoY (Punto p2) {
-    	return(p2.getY() < this.getY());
+    	return (p2.getY() < this.getY());
     }
-    public boolean esDistinto(int prev) {
-    	return(this.getY()!=prev);
+
+    public boolean esDistintoY(int prev) {
+        return (this.getY()!=prev);
     }
+
+    public boolean esDistintoX(int prev) {
+        return (this.getX()!=prev);
+    }
+
     public boolean esIgualY(Punto p2){
         return this.getY() == p2.getY();
+    }
+
+    public boolean esIgualX(Punto p2){
+        return this.getX() == p2.getX();
     }
 
     public int calcularMaximo(int s2y) {

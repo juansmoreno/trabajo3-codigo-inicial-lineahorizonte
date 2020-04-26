@@ -136,7 +136,7 @@ public class LineaHorizonte {
             if (p2.esMaximoX(p1)) { // si X del s1 es menor que la X del s2
                 paux = actualizarPaux(p1,s2y); //La X de paux sera la X de p1 y la Y sera el maximo entre la Y de p1 y s2y
 
-                if (paux.esDistinto(prev)) { // si este maximo es distinto al del segmento anterior
+                if (paux.esDistintoY(prev)) { // si este maximo es distinto al del segmento anterior
                     prev = anadirPuntoALineaHorizonte(salida, paux);    //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
                 s1y = actualizarAlturaLineaHorizonte(p1, s1);
@@ -144,16 +144,16 @@ public class LineaHorizonte {
             else if (p1.esMaximoX(p2)) { // si X del s1 es mayor que la X del s2
                 paux = actualizarPaux(p2,s1y); //La X de paux sera la X de p2 y la Y sera el maximo entre la Y de p2 y s1y
 
-                if (paux.esDistinto(prev)){ // si este maximo es distinto al del segmento anterior
+                if (paux.esDistintoY(prev)){ // si este maximo es distinto al del segmento anterior
                     prev = anadirPuntoALineaHorizonte(salida, paux);    //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
                 s2y = actualizarAlturaLineaHorizonte(p2, s2);
             }
             else { // si la X del s1 es igual a la X del s2
-                if (p1.esMaximoY(p2) && (p1.esDistinto(prev))) { // guardaremos aquel punto que tenga la altura mas alta
+                if (p1.esMaximoY(p2) && (p1.esDistintoY(prev))) { // guardaremos aquel punto que tenga la altura mas alta
                     prev = anadirPuntoALineaHorizonte(salida, p1);      //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
-                if ((p2.esMaximoY(p1) || p2.esIgualY(p1)) && (p2.esDistinto(prev))){
+                if ((p2.esMaximoY(p1) || p2.esIgualY(p1)) && (p2.esDistintoY(prev))){
                     prev = anadirPuntoALineaHorizonte(salida, p2);      //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
                 s2y = actualizarAlturaLineaHorizonte(p2, s2);
@@ -164,7 +164,7 @@ public class LineaHorizonte {
         while ((!s1.isEmpty())) { //si aun nos quedan elementos en el s1
             paux=s1.getPunto(0); // guardamos en paux el primer punto
 
-            if (paux.esDistinto(prev)) { // si paux no tiene la misma altura del segmento previo
+            if (paux.esDistintoY(prev)) { // si paux no tiene la misma altura del segmento previo
                 prev = anadirPuntoALineaHorizonte(salida, paux);        //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
             }
             s1.borrarPunto(0); // en cualquier caso eliminamos el punto de s1 (tanto si se añade como si no es valido)
@@ -173,7 +173,7 @@ public class LineaHorizonte {
         while((!s2.isEmpty())) { //si aun nos quedan elementos en el s2
             paux=s2.getPunto(0); // guardamos en paux el primer punto
 
-            if (paux.esDistinto(prev)) { // si paux no tiene la misma altura del segmento previo
+            if (paux.esDistintoY(prev)) { // si paux no tiene la misma altura del segmento previo
                 prev = anadirPuntoALineaHorizonte(salida, paux);        //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
             }
             s2.borrarPunto(0); // en cualquier caso eliminamos el punto de s2 (tanto si se añade como si no es valido)
