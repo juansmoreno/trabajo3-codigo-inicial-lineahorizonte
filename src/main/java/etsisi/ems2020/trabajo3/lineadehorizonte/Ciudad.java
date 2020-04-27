@@ -23,32 +23,33 @@ public class Ciudad {
     	 * Generamos una ciudad de manera aleatoria para hacer 
     	 * pruebas.
     	 */
-	ciudad = new ArrayList <Edificio>();
-	this.metodoRandom(5);
-	        
-	ciudad = new ArrayList <Edificio>();
+        this.ciudad = new ArrayList <Edificio>();
+
+	    /*
+	    for(int i=0;i<5;i++) {
+	    	int xi=(int)(Math.random()*100);
+	    	int y=(int)(Math.random()*100);
+	    	int xd=(int)(xi+(Math.random()*100));
+	        ciudad.add(new Edificio(Arrays.asList(xi,xd,y)));
+	    }*/
+	    
     }
-    
         
     public Edificio getEdificio(int i) {
         return (Edificio)this.ciudad.get(i);
     }
-    
        
-    public void addEdificio (Edificio e)
-    {
-        ciudad.add(e);
+    public void addEdificio (Edificio edificio) {
+        ciudad.add(edificio);
     }
 
-    public void removeEdificio(int i)
-    {
+    public void removeEdificio(int i) {
         ciudad.remove(i);
     }
 
     public int size() {
         return ciudad.size();
     }
-
 
     /*
      Método que carga los edificios que me pasan en el
@@ -59,33 +60,18 @@ public class Ciudad {
 
     public void cargarEdificios (String fichero) {
         try {
-        	
-            int xi, y, xd;
-            Scanner sr = new Scanner(new File(fichero));
+            Scanner scanner = new Scanner(new File(fichero));
 
-            while(sr.hasNext()) {
-                xi = sr.nextInt();
-                xd = sr.nextInt();
-                y = sr.nextInt();
+            while(scanner.hasNext()) {
+                int xi = scanner.nextInt();
+                int xd = scanner.nextInt();
+                int y = scanner.nextInt();
 
                 this.addEdificio(new Edificio(Arrays.asList(xi,xd,y)));
             }
-        } catch(Exception e){
-        	System.out.println(e);
+        } catch(Exception exception){
+        	System.out.println(exception);
         }
-           
     }
 
-    public void metodoRandom(int n)
-    {
-        int i=0;
-        int xi,y,xd;
-        for(i=0;i<n;i++)
-        {
-            xi=(int)(Math.random()*100);
-            y=(int)(Math.random()*100);
-            xd=(int)(xi+(Math.random()*100));
-            this.addEdificio(new Edificio(Arrays.asList(xi,xd,y)));
-        }
-    }
 }

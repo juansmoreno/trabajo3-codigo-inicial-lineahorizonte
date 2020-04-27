@@ -7,8 +7,8 @@ package etsisi.ems2020.trabajo3.lineadehorizonte;
  * cartesiano de coordendas
  */
 public class Punto {
-	int x;
-    int y;
+	private int x;
+    private int y;
 
     /*
      * Constructor sin par�metros de un punto en concreto
@@ -57,28 +57,29 @@ public class Punto {
     public void setY(int y) {
         this.y = y;
     }
-    
-    public double distancia (Punto b){          //PARECE UN METODO INUNTIL
-    	double cateto1 = x - b.getX();
-    	double cateto2 = y - b.getY();
-    	double hipotenusa = Math.sqrt(cateto1*cateto1 + cateto2*cateto2);
-    	return hipotenusa;
+
+    /*
+    public double distancia (Punto p){
+    	double cateto1 = x - p.getX();
+    	double cateto2 = y - p.getY();
+    	return Math.sqrt(cateto1 * cateto1 + cateto2 * cateto2);
     }
+    */
     
     public boolean esMaximoX (Punto p2) {
-    	return (p2.getX() < this.getX());
+    	return p2.getX() < this.getX();
     }
     
     public boolean esMaximoY (Punto p2) {
-    	return (p2.getY() < this.getY());
+    	return p2.getY() < this.getY();
     }
 
     public boolean esDistintoY(int prev) {
-        return (this.getY()!=prev);
+        return this.getY()!=prev;
     }
 
     public boolean esDistintoX(int prev) {
-        return (this.getX()!=prev);
+        return this.getX()!=prev;
     }
 
     public boolean esIgualY(Punto p2){
