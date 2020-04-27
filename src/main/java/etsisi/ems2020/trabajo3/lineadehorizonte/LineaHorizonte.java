@@ -135,25 +135,21 @@ public class LineaHorizonte {
             Punto p1 = lineaHorizonte1.getPunto(0); // guardamos el primer elemento de lineaHorizonte1
             Punto p2 = lineaHorizonte2.getPunto(0); // guardamos el primer elemento de lineaHorizonte2
 
-
-
             if (p2.esMaximoX(p1)) { // si X del lineaHorizonte1 es menor que la X del lineaHorizonte2
                 paux = actualizarPaux(p1,s2y); //La X de paux sera la X de p1 y la Y sera el maximo entre la Y de p1 y s2y
-
-                if (paux.esDistintoY(prev)) { // si este maximo es distinto al del segmento anterior
-                    prev = anadirPuntoALineaHorizonte(salida, paux);    //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
-                }
                 s1y = actualizarAlturaLineaHorizonte(p1, lineaHorizonte1);
             }
+
             else if (p1.esMaximoX(p2)) { // si X del lineaHorizonte1 es mayor que la X del lineaHorizonte2
                 paux = actualizarPaux(p2,s1y); //La X de paux sera la X de p2 y la Y sera el maximo entre la Y de p2 y s1y
-
-                if (paux.esDistintoY(prev)){ // si este maximo es distinto al del segmento anterior
-                    prev = anadirPuntoALineaHorizonte(salida, paux);    //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
-                }
                 s2y = actualizarAlturaLineaHorizonte(p2, lineaHorizonte2);
             }
-            else { // si la X del lineaHorizonte1 es igual a la X del lineaHorizonte2
+
+            if (paux.esDistintoY(prev)) { // si este maximo es distinto al del segmento anterior
+                prev = anadirPuntoALineaHorizonte(salida, paux);    //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
+            }
+
+            if(p1.esIgualX(p2)){ // si la X del lineaHorizonte1 es igual a la X del lineaHorizonte2
                 if (p1.esMaximoY(p2) && p1.esDistintoY(prev)) { // guardaremos aquel punto que tenga la altura mas alta
                     prev = anadirPuntoALineaHorizonte(salida, p1);      //se añade paux a la solucion de LineaHorizonte y se guarda su Y en prev
                 }
