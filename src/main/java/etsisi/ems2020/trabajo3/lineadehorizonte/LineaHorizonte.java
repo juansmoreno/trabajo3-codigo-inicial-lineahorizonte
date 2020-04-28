@@ -137,13 +137,13 @@ public class LineaHorizonte {
             Punto p2 = lineaHorizonte2.getPunto(0); // guardamos el primer elemento de lineaHorizonte2
 
             if (p2.esMaximoX(p1)) { // si X del lineaHorizonte1 es menor que la X del lineaHorizonte2
-                pAux = actualizarPaux(p1,yLineaHorizonte2); //La X de pAux sera la X de p1 y la Y sera el maximo entre la Y de p1 y yLineaHorizonte2
+                pAux = p1.actualizarPaux(yLineaHorizonte2); //La X de pAux sera la X de p1 y la Y sera el maximo entre la Y de p1 y yLineaHorizonte2
                 //En cualquier caso eliminamos el punto de lineaHorizonte1 (tanto si se añade como si no es valido) y actualizamos la altura yLineaHorizonte1 a la de p1
                 yLineaHorizonte1 = actualizarAlturaLineaHorizonte(p1, lineaHorizonte1);
             }
 
             else if (p1.esMaximoX(p2)) { // si X del lineaHorizonte1 es mayor que la X del lineaHorizonte2
-                pAux = actualizarPaux(p2,yLineaHorizonte1); //La X de pAux sera la X de p2 y la Y sera el maximo entre la Y de p2 y yLineaHorizonte1
+                pAux = p2.actualizarPaux(yLineaHorizonte1); //La X de pAux sera la X de p2 y la Y sera el maximo entre la Y de p2 y yLineaHorizonte1
                 //En cualquier caso eliminamos el punto de lineaHorizonte2 (tanto si se añade como si no es valido) y actualizamos la altura yLieneaHorizonte2 a la de p2
                 yLineaHorizonte2 = actualizarAlturaLineaHorizonte(p2, lineaHorizonte2);
             }
@@ -176,10 +176,6 @@ public class LineaHorizonte {
     public int actualizarAlturaLineaHorizonte(Punto p1, LineaHorizonte lineaHorizonte){
         lineaHorizonte.borrarPunto(0); // en cualquier caso eliminamos el punto de lineaHorizonte (tanto si se añade como si no es valido)
         return p1.getY();   // actualizamos la altura yLineaHorizonte1
-    }
-
-    public Punto actualizarPaux(Punto p1, int yLineaHorizonte) {
-        return new Punto(p1.getX(), p1.calcularMaximoIntY(yLineaHorizonte));
     }
 
     public int anadirPuntoALineaHorizonte(LineaHorizonte salida, Punto pAux) {
