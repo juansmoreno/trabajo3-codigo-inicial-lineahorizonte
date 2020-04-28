@@ -123,31 +123,6 @@ public class LineaHorizonte {
     public LineaHorizonte lineaHorizonteFussion(LineaHorizonte lineaHorizonte1,LineaHorizonte lineaHorizonte2){
         LineaHorizonte salida = new LineaHorizonte(); // LineaHorizonte de salida
         imprimirFusionLineas(lineaHorizonte1,lineaHorizonte2);	//Imprimios la fusión de las lineas
-
-        int prev = fusionarLineasHorizonte(salida, lineaHorizonte1, lineaHorizonte2);
-
-        finalizarFusionLineasHorizonte(salida, lineaHorizonte1, prev);
-
-        finalizarFusionLineasHorizonte(salida, lineaHorizonte2, prev);
-
-        return salida;
-    }
-
-    public int actualizarAlturaLineaHorizonte(Punto p1, LineaHorizonte lineaHorizonte1){
-        lineaHorizonte1.borrarPunto(0); // en cualquier caso eliminamos el punto de lineaHorizonte1 (tanto si se añade como si no es valido)
-        return p1.getY();   // actualizamos la altura yLieneaHorizonte1
-    }
-
-    public Punto actualizarPaux(Punto p1, int yLineaHorizonte2) {
-        return new Punto(p1.getX(), p1.calcularMaximo(yLineaHorizonte2));
-    }
-
-    public int anadirPuntoALineaHorizonte(LineaHorizonte salida, Punto pAux) {
-        salida.addPunto(pAux); // añadimos el punto al LineaHorizonte de salida
-        return pAux.getY();
-    }
-
-    public int fusionarLineasHorizonte(LineaHorizonte salida, LineaHorizonte lineaHorizonte1, LineaHorizonte lineaHorizonte2){
         Punto pAux = new Punto();  // Inicializamos la variable pAux
         int yLieneaHorizonte1=-1;
         int yLineaHorizonte2=-1;
@@ -190,13 +165,31 @@ public class LineaHorizonte {
             }
         }
 
-        return prev;
+        finalizarFusionLineasHorizonte(salida, lineaHorizonte1, prev);
+
+        finalizarFusionLineasHorizonte(salida, lineaHorizonte2, prev);
+
+        return salida;
+    }
+
+    public int actualizarAlturaLineaHorizonte(Punto p1, LineaHorizonte lineaHorizonte1){
+        lineaHorizonte1.borrarPunto(0); // en cualquier caso eliminamos el punto de lineaHorizonte1 (tanto si se añade como si no es valido)
+        return p1.getY();   // actualizamos la altura yLieneaHorizonte1
+    }
+
+    public Punto actualizarPaux(Punto p1, int yLineaHorizonte2) {
+        return new Punto(p1.getX(), p1.calcularMaximo(yLineaHorizonte2));
+    }
+
+    public int anadirPuntoALineaHorizonte(LineaHorizonte salida, Punto pAux) {
+        salida.addPunto(pAux); // añadimos el punto al LineaHorizonte de salida
+        return pAux.getY();
     }
 
     public void finalizarFusionLineasHorizonte(LineaHorizonte salida, LineaHorizonte lineaHorizonte, int prev){
-        Punto pAux = new Punto();  // Inicializamos la variable pAux
+
         while (!lineaHorizonte.isEmpty()) { //si aun nos quedan elementos en el lineaHorizonte1
-            pAux=lineaHorizonte.getPunto(0); // guardamos en pAux el primer punto
+            Punto pAux=lineaHorizonte.getPunto(0); // guardamos en pAux el primer punto
 
             if (pAux.esDistintoY(prev)) { // si pAux no tiene la misma altura del segmento previo
                 prev = anadirPuntoALineaHorizonte(salida, pAux);        //se añade pAux a la solucion de LineaHorizonte y se guarda su Y en prev
