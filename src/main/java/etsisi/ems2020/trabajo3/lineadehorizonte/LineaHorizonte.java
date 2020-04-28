@@ -136,7 +136,6 @@ public class LineaHorizonte {
         return salida;
     }
 
-
     public int anadirPuntoALineaHorizonte(LineaHorizonte salida, Punto pAux) {
         salida.addPunto(pAux); // añadimos el punto al LineaHorizonte de salida
         return pAux.getY();
