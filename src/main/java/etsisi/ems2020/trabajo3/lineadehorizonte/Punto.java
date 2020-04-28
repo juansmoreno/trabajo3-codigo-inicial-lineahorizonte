@@ -78,6 +78,22 @@ public class Punto {
         return this.getY()!=prev;
     }
 
+    public boolean esMaximoX (Punto punto) {
+        return this.getX() > punto.getX();
+    }
+
+    public boolean esMaximoY (Punto punto) {
+        return this.getY() > punto.getY();
+    }
+
+    public boolean esIgualY(Punto punto){
+        return this.getY() == punto.getY();
+    }
+
+    public boolean esIgualX(Punto punto){
+        return this.getX() == punto.getX();
+    }
+
 	@Override
 	public String toString() {
 		String linea = "Punto [x=";

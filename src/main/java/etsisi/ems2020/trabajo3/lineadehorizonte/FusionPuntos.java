@@ -26,37 +26,37 @@ public class FusionPuntos {
     }
 
     public boolean esMaximoXP2 () {
-        return this.p1.getX() < this.p2.getX();
+        return this.p2.esMaximoX(p1);
     }
 
     public boolean esMaximoYP2 () {
-        return this.p1.getY() < this.p2.getY();
+        return this.p2.esMaximoY(p1);
     }
 
     public boolean esMaximoXP1 () {
-        return this.p2.getX() < this.p1.getX();
+        return this.p1.esMaximoX(p2);
     }
 
     public boolean esMaximoYP1 () {
-        return this.p2.getY() < this.p1.getY();
+        return this.p1.esMaximoY(p2);
     }
 
 
     public boolean esDistintoYP1 (int prev) {
-        return this.p1.getY()!=prev;
+        return this.p1.esDistintoY(prev);
     }
 
     public boolean esDistintoYP2 (int prev) {
-        return this.p2.getY()!=prev;
+        return this.p2.esDistintoY(prev);
     }
 
 
     public boolean esIgualY(){
-        return this.p1.getY() == this.p2.getY();
+        return this.p1.esIgualY(this.p2);
     }
 
     public boolean esIgualX(){
-        return this.p1.getX() == this.p2.getX();
+        return this.p1.esIgualX(this.p2);
     }
 
 
