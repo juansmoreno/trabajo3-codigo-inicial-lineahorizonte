@@ -65,41 +65,17 @@ public class Punto {
     	return Math.sqrt(cateto1 * cateto1 + cateto2 * cateto2);
     }
     */
-    
-    public boolean esMaximoX (Punto punto) {
-    	return punto.getX() < this.getX();
-    }
-    
-    public boolean esMaximoY (Punto punto) {
-    	return punto.getY() < this.getY();
-    }
 
-    public boolean esDistintoY(int prev) {
-        return this.getY()!=prev;
-    }
-
-    public boolean esDistintoX(int prev) {
-        return this.getX()!=prev;
-    }
-
-    public boolean esIgualY(Punto punto){
-        return this.getY() == punto.getY();
-    }
-
-    public boolean esIgualX(Punto punto){
-        return this.getX() == punto.getX();
+    public Punto actualizarPaux(int yLineaHorizonte){
+        return new Punto(this.getX(), this.calcularMaximoIntY(yLineaHorizonte));
     }
 
     public int calcularMaximoIntY(int entero) {
         return Math.max(this.getY(), entero);
     }
 
-    public int calcularMaximoIntX(int entero) {
-        return Math.max(this.getX(), entero);
-    }
-
-    public Punto actualizarPaux(int yLineaHorizonte){
-        return new Punto(this.getX(), this.calcularMaximoIntY(yLineaHorizonte));
+    public boolean esDistintoY (int prev) {
+        return this.getY()!=prev;
     }
 
 	@Override
