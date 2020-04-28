@@ -98,6 +98,10 @@ public class Punto {
         return Math.max(this.getX(), entero);
     }
 
+    public Punto actualizarPaux(int yLineaHorizonte){
+        return new Punto(this.getX(), this.calcularMaximoIntY(yLineaHorizonte));
+    }
+
 	@Override
 	public String toString() {
 		String linea = "Punto [x=";
