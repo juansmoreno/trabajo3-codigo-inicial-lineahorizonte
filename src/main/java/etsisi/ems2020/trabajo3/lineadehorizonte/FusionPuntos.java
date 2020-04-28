@@ -46,14 +46,6 @@ public class FusionPuntos {
         return this.p1.getY()!=prev;
     }
 
-    public boolean esDistintoXP1 (int prev) {
-        return this.p1.getX()!=prev;
-    }
-
-    public boolean esDistintoXP2 (int prev) {
-        return this.p2.getX()!=prev;
-    }
-
     public boolean esDistintoYP2 (int prev) {
         return this.p2.getY()!=prev;
     }
